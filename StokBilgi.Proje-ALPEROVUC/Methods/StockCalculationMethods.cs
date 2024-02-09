@@ -12,7 +12,7 @@ namespace StokBilgi.Proje_ALPEROVUC.Methods
 
         StockValues _stockValues = new StockValues();
 
-        public void CalculateStok(int _miktar, StokKartBilgi stokKartBilgi)
+        public void CalculateStokMethod(int _miktar, StokKartBilgi stokKartBilgi)
         {
             int kasaSayisi = (int)(_miktar / stokKartBilgi.KasaIciMiktar);
             decimal kalanMiktar = _miktar % stokKartBilgi.KasaIciMiktar; //Son oluşan etiketin eksiltme miktarı stok kartındaki eksiltme miktarından küçük olup olmadığı kontrol edilir.
@@ -21,18 +21,18 @@ namespace StokBilgi.Proje_ALPEROVUC.Methods
             {
                 StockValues.counter++;
 
-                AddBarkodList(stokKartBilgi, stokKartBilgi.KasaIciMiktar, stokKartBilgi.EksiltmeMiktar);
+                AddBarkodListMethod(stokKartBilgi, stokKartBilgi.KasaIciMiktar, stokKartBilgi.EksiltmeMiktar);
             }
 
             if (kalanMiktar > 0)
             {
                 StockValues.counter++;
 
-                AddBarkodList(stokKartBilgi, kalanMiktar, kalanMiktar);
+                AddBarkodListMethod(stokKartBilgi, kalanMiktar, kalanMiktar);
             }
         }
 
-        private void AddBarkodList(StokKartBilgi stokKartBilgi, decimal miktar, decimal eksiltmemiktar)
+        private void AddBarkodListMethod(StokKartBilgi stokKartBilgi, decimal miktar, decimal eksiltmemiktar)
         {
             _stockValues.calculatedBarkodNo = customDate + StockValues.counter.ToString("D4"); // Uniqe değerin atanması
 

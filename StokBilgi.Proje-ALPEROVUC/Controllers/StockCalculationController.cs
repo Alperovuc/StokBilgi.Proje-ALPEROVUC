@@ -22,14 +22,14 @@ namespace StokBilgi.Proje_ALPEROVUC.Controllers
             }
         }
 
-        [HttpGet("IrsaliyeEntryMethod")]
-        public IActionResult IrsaliyeEntryMethod(string _stokNo, int _miktar)// Tekli giriş için tasarlanmıştır. Çoklu giriş için json formatında liste halinde veri girişi yapılması gerekir.
+        [HttpGet("IrsaliyeEntry")]
+        public IActionResult IrsaliyeEntry(string _stokNo, int _miktar)// Tekli giriş için tasarlanmıştır. Çoklu giriş için json formatında liste halinde veri girişi yapılması gerekir.
         {
             var matchingStokNo = StockValues.stokkartbilgiList.FirstOrDefault(b => b.StokNo == _stokNo);
 
             if (matchingStokNo != null)
             {
-                stockCalculationMethods.CalculateStok(_miktar, matchingStokNo);
+                stockCalculationMethods.CalculateStokMethod(_miktar, matchingStokNo);
             }
             else
             {
